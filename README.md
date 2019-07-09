@@ -27,6 +27,6 @@ print("testerino", color='blue', tag='success', tag_color='green', format='under
 ![Alt text](/img/four.png?raw=true)
 
 
-colors: [yellow, red, green, blue, cyan, magenta, purple]
-backgrounds: [yellow, red, green, blue, cyan, magenta, purple]
-formats: [bold, underline, blink]
+* colors: [yellow, red, green, blue, cyan, magenta, purple]
+* backgrounds: [yellow, red, green, blue, cyan, magenta, purple]
+* formats: [bold, underline, blink]
