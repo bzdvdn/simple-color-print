@@ -1,6 +1,7 @@
 import builtins
 import sys
 
+
 class ColorPrint:
     colors = {
         "purple": '\033[95m',
@@ -13,10 +14,10 @@ class ColorPrint:
     }
 
     backgrounds = {
-        'grey': '\033[40m',  'red': '\033[41m',
+        'grey': '\033[40m', 'red': '\033[41m',
         'green': '\033[42m', 'yellow': '\033[43m',
-        'blue': '\033[44m',  'magenta': '\033[45m',
-        'cyan': '\033[46m',  'white': '\033[47m',
+        'blue': '\033[44m', 'magenta': '\033[45m',
+        'cyan': '\033[46m', 'white': '\033[47m',
     }
 
     formats = {
@@ -27,7 +28,6 @@ class ColorPrint:
         self.args = args
         self.kwargs = kwargs
 
-    
     def print(self):
         color = self.kwargs.pop('color', None)
         back = self.kwargs.pop('background', None)
@@ -39,7 +39,7 @@ class ColorPrint:
 
         if color:
             result = self.color(color) + result
-        
+
         if tag:
             result = f"[{tag}] {result}"
             if tag_color:
@@ -51,15 +51,12 @@ class ColorPrint:
             builtins.print(self.format(format), file=sys.stdout, end='')
         result += self.end
         builtins.print(*result.split(','), **self.kwargs)
-                
 
     def color(self, color):
         return self.colors.get(color, self.default_color)
 
-    
     def background(self, back):
         return self.backgrounds.get(back, self.default_color)
-
 
     def format(self, format):
         if isinstance(format, str):
@@ -67,11 +64,9 @@ class ColorPrint:
         elif isinstance(format, list, tuple):
             return ",".join(f for f in self.formats.get(f) for f in format)
 
-
     @property
     def end(self):
         return '\033[0m'
-
 
     @property
     def default_color(self):
